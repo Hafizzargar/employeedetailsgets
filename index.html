@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+    <div class="text back" id="nav">
+
+       <div> <h1>Student Protal</h1></div>
+       <div><button  id="add" onclick="adddata()">ADD new emp</button></div>
+
+    </div>
+    <div id="search">
+        <input type="text" placeholder="SEARCH...." id="sea" class="sea">
+        <button class="sea back" id="bu1">SEARCH</button>
+    </div>
+    <div id="main">
+        <div id="az" onclick="az()">Sort by A->Z</div>
+        <div id="za" onclick="za()">Sort by Z->A</div>
+        <div id="ma" onclick="ma()"> Sort by Marks</div>
+        <div id="cl" onclick="c1()">Sort by Class</div>
+        <div id="gen" onclick="gen()">Sort by Gender</div>
+
+    </div>
+
+    <table id="table" class="table">
+        <thead>
+            <tr>
+                <th class="id">ID</th>
+                <th class="name">Name</th>
+                <th class="eq">Gender</th>
+                <th class="eq">Class</th>
+                <th class="eq">Marks</th>
+                <th class="eq">Passing</th>
+                <th class="eq">Email</th>
+            </tr>
+
+        </thead>
+        <tbody id="tbody">
+            
+           
+        </tbody>
+    </table>
+    
+        <form id="form" class="hidden">
+            <h3 style="color: aliceblue; margin-top: 10px;">NEW EMPLOYEE DETAILS</h3>
+            <img id="formimg"src="data:image/png;base64,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" >
+            <input type="text" placeholder="FirstName" name="fn">
+            <input type="text" placeholder="lastName" name="ln">
+            <input type="text" placeholder="gender" name="gender">
+            <input type="email" placeholder="email" name="email">
+            <input type="text" placeholder="class" name="class">
+            <input type="text" placeholder="Passing" name="passing">
+            <input type="text" placeholder="marks" name="marks">
+            <input type="text" placeholder="city" name="city">
+            <input type="file" placeholder="image" name="photo">
+            <button id="submit">SUBMIT</button>
+        </form>
+    <script src="./index.js"></script>
+</body>
+
+
+</html>
